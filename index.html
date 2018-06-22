@@ -1,0 +1,98 @@
+<!doctype html>
+    <head>
+        <!-- <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+
+        <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+        <!-- <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style> -->
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+    <body>
+    <img src="assets/images/header_bg.gif" alt="header_bg" />
+    <a class="navbar-brand" href="#">Shape Calculator</a>
+    
+    <div class="container clearfix">
+      <div class="left-blk blk">
+          <h3>Welcome to Shape Calculator</h3>
+          <p><b>Shape Calculator is an interactive web application. To the right you will
+			find the 3 step application. Follow the instructions in each step.
+			Clicking cancel will take you back to step 1. Enjoy!</b>
+			<br>
+			A small river named Duden flows by their place and supplies it with the
+			necessary regelialia. It is a paradisematic country, in which roasted parts of
+			sentences fly into your mouth.
+			Even the all-powerful Pointing has no control about the blind texts it is an
+			almost unorthographic life One day however a small line of blind text by the
+			name of Lorem Ipsum decided to leave for the far World of Grammar. The
+			Big Oxmox advised her not to do so, because there were thousands of bad
+			Commas.</p>
+       </div>
+    <div class="right-blk blk">
+    		<div class="inner-left clearfix">
+	        	<div class="tab">
+	        		<h3>Step 1 : Select your shape</h3>
+					<p>Please select the shape that you would like
+					to calculate the area of and press the
+					button "Go to step 2"</p>
+					<ul id="shapes">
+						<li><input name="shape" type="radio" value="rectangle" checked="checked"><span>Rectangle</span></li>
+						<li><input name="shape" type="radio" value="circle"><span>Circle</span></li>
+						<li><input name="shape" type="radio" value="square"><span>Square</span></li>
+						<li><input name="shape" type="radio" value="ellipse"><span>Ellipse</span></li>
+					</ul>
+					<div class="submission clearfix">
+						<button onclick="showTab(1)">Go to step 2</button>
+						<div class="cancel-right" onclick>cancel</div>
+					</div>
+				</div>
+				<div class="tab">
+	        		<h3>Step 2 : Insert your values</h3>
+					<p>You have selected a <span class="placeholder">rectangle</span>, please input
+						the required variables.</p>
+					<ul>
+						<li id="rectangle" class="shapeInputs">
+							<p><span>Height</span><input type="text" value=""  /></p>
+							<p><span>Width</span><input type="text" value=""  /></p>
+						</li>
+						<li id="circle" class="shapeInputs">
+							<p><span>Diameter</span><input type="text" value=""  /></p>
+						</li>
+						<li id="square" class="shapeInputs">
+							<p><span>Width</span><input type="text" value=""  /></p>
+						</li>
+						<li id="ellipse" class="shapeInputs">
+							<p><span>Height</span><input type="text" value=""  /></p>
+							<p><span>Width</span><input type="text" value=""  /></p>
+						</li>
+						
+					</ul>
+					<div class="submission">
+						<button onclick="showTab(2)">Go to step 3</button>
+						<div class="cancel-right" onclick="startOver()">cancel</div>
+					</div>
+				</div>
+				<div class="tab">
+	        		<h3>Step 3 : Your result</h3>
+					<p>You have calculated the area of a <span class="placeholder">circle</span>
+					with a diameter of <span>24</span>. Below is your result:</p>
+					<h4>The area is <span id="set-result">240</span></h4>
+					<div class="submission">
+						<button onclick="startOver()">Start over</button>
+					</div>
+				</div>
+	        </div>
+       	</div>
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+    </body>
+</html>
