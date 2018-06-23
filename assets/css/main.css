@@ -88,7 +88,7 @@ body{
 	border: 2px solid #d4d4d4;
 	border-radius: 10px;
 	padding: 10px 30px 20px 30px;
-	width :50%; 
+	width :55%; 
 }
 b{
 	font-weight: 800
@@ -126,4 +126,8 @@ b{
 }
 .hide{
 	display: none;
+}
+.left-blk p{
+	padding: 0 0 10px 0;
+	font-weight: 800;
 }

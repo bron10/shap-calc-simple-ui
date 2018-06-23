@@ -29,7 +29,7 @@ function showTab(n) {
   }
 
 	let shapes = document.getElementsByName('shape');
-	console.log("shapes.elements", shapes);
+	//console.log("shapes.elements", shapes);
 	let selectedShape = null;
 	for (let i = 0; i < shapes.length; i++) {
 		let shape = shapes[i];
@@ -57,8 +57,14 @@ function showTab(n) {
 	/**
 	 * Setting placeholder for shapes
 	 */
-	document.getElementsByClassName('placeholder').innerHTML = selectedShape;
-	console.log("document.getElementsByClassName('placeholder')", document.getElementsByClassName('placeholder'))
+	const placeholders = document.getElementsByClassName('placeholder');
+	 //= selectedShape;
+	for (var i = 0; i < placeholders.length; i++) {
+		let placeholder = placeholders[i];
+		placeholder.innerHTML = selectedShape; 
+	}
+
+	//console.log("document.getElementsByClassName('placeholder')", document.getElementsByClassName('placeholder'))
 
 	/**
 	 * Setting result
@@ -79,10 +85,6 @@ function showTab(n) {
 
 function startOver(){
 	showTab(0);
-}
-
-function calc(){
-
 }
 
 
