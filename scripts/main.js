@@ -1,18 +1,92 @@
-const shape = {
-	rectangle(shapeInputs){
-		return shapeInputs[0].value * shapeInputs[1].value;
-	},
-	circle(shapeInputs){
-		let radius = (shapeInputs[0].value)/2; 
-		return Math.PI*(radius*radius);
-	},
-	square(shapeInputs){
-		return shapeInputs[0].value*shapeInputs[0].value;
-	},
-	ellipse(inputs){
-		return Math.PI*this.rectangle(inputs);
+
+function Shapes(){
+	this.selectedShape;
+	this.selectedShapeElement;
+	this.initTabs(0);
+}
+
+Shapes.prototype.initTabs = function(n){
+	// This function will display the specified tab of the form ...
+  	const tabElements 			= document.getElementsByClassName('tab');
+  	const tabLength 			= tabElements.length;
+	if(!n){
+		this.selectedShape  		= null;
+		this.selectedShapeElement 	= null; 
+	}
+
+	// Select tab
+	for(let index=0;index<tabLength;index++){
+		if(index==n)
+			tabElements.item(index).style.display = "block";
+		else
+			tabElements.item(index).style.display = "none";
+	}		
+}
+
+Shapes.prototype.getShape = function(){
+	this.initTabs(1);
+	let shapes = document.getElementsByName('shape');
+	
+	let shapeInputs 			= document.getElementsByClassName('shapeInputs');
+	let shapeInputslength 		= shapeInputs.length;
+
+	for (let i = 0; i < shapes.length; i++) {
+		let shape = shapes[i];
+		if(shape.checked){
+			this.selectedShape = shape.value;
+		}
+	}
+	
+	this.selectedShapeElement 	= document.getElementById(this.selectedShape);
+	let shapeParameters = this.selectedShapeElement.getElementsByTagName('input');
+	
+	for (let i = 0; i < shapeInputslength; i++) {
+		let shapeInput = shapeInputs[i];
+		//console.log("shapeInputs==selectedShapeElement", shapeInputs, selectedShapeElement)
+		if(shapeInput==this.selectedShapeElement){
+			shapeInput.style.display = "block";
+		}else{
+			shapeInput.style.display = "none";
+		}
+	}
+	this.shapePlaceHolders();
+}
+
+Shapes.prototype.getShapeInputs = function(){
+	//selectedShapeElement 	= document.getElementById(this.selectedShape);
+	let shapeParameters = this.selectedShapeElement.getElementsByTagName('input');
+	//console.log("selectedShape", this.selectedShape);
+	if(_M[this.selectedShape]){
+		result = _M[this.selectedShape](shapeParameters);
+	}
+	document.getElementById('set-result').innerHTML = result;
+	this.initTabs(2);
+	//this.shapePlaceHolders();
+}
+
+Shapes.prototype.shapePlaceHolders = function(){
+	const placeholders = document.getElementsByClassName('placeholder');
+	for (var i = 0; i < placeholders.length; i++) {
+		let placeholder = placeholders[i];
+		placeholder.innerHTML = this.selectedShape; 
 	}
 }
+
+Shapes.prototype.startOver = function(){
+	console.log("this.selectedShapeElement", this.selectedShapeElement);
+	if(this.selectedShapeElement){
+		let shapeParameters = this.selectedShapeElement.getElementsByTagName('input');
+		console.log("shapeParameters", shapeParameters);
+		for (var i = 0; i < shapeParameters.length; i++) {
+			let shapeParameter = shapeParameters[i];
+			shapeParameter.value = ""; 
+		}		
+	}
+	this.initTabs(0);
+}
+
+window._S = new Shapes();
+
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
@@ -20,7 +94,9 @@ function showTab(n) {
   	
   const tabLength = tabElements.length;
 
-  //console.log("tabs", tabs);
+  /**
+   * Select tab
+   */
   for(let index=0;index<tabLength;index++){
   	if(index==n)
   		tabElements.item(index).style.display = "block";
@@ -31,6 +107,10 @@ function showTab(n) {
 	let shapes = document.getElementsByName('shape');
 	//console.log("shapes.elements", shapes);
 	let selectedShape = null;
+
+	/**
+	 * Select shape
+	 */
 	for (let i = 0; i < shapes.length; i++) {
 		let shape = shapes[i];
 		if(shape.checked){
@@ -80,7 +160,8 @@ function showTab(n) {
 	document.getElementById('set-result').innerHTML =result;
 	console.log("result", result);
 
-}showTab(0)
+}
+//showTab(0)
 
 
 function startOver(){

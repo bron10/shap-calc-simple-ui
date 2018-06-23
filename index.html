@@ -50,7 +50,7 @@
 						<li><input name="shape" type="radio" value="ellipse"><span>Ellipse</span></li>
 					</ul>
 					<div class="submission clearfix">
-						<button onclick="showTab(1)">Go to step 2</button>
+						<button onclick="_S.getShape()">Go to step 2</button>
 						<div class="cancel-right" onclick>cancel</div>
 					</div>
 				</div>
@@ -76,7 +76,7 @@
 						
 					</ul>
 					<div class="submission">
-						<button onclick="showTab(2)">Go to step 3</button>
+						<button onclick="_S.getShapeInputs()">Go to step 3</button>
 						<div class="cancel-right" onclick="startOver()">cancel</div>
 					</div>
 				</div>
@@ -85,14 +85,16 @@
 					<p>You have calculated the area of a <span class="placeholder">circle</span>
 					with a diameter of <span>24</span>. Below is your result:</p>
 					<h4>The area is <span id="set-result">240</span></h4>
+					<ul></ul>
 					<div class="submission">
-						<button onclick="startOver()">Start over</button>
+						<button onclick="_S.startOver()">Start over</button>
 					</div>
 				</div>
 	        </div>
        	</div>
       </div>
     </div>
+    <script src="scripts/math.js"></script>
     <script src="scripts/main.js"></script>
     </body>
 </html>
